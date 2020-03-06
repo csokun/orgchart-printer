@@ -42,10 +42,12 @@ Update [data file](data/employees.json)
 |   ├── Ricky
 |   ├── Alex
 |   |   ├── Alex I
-|   |   ├── Alex II
-|   |   |   └── Junior
+|   |   |   ├── Alex II
+|   |   |   |   └── Junior
 |   ├── Steve
 |   |   └── David
-├── ** self-manager **
+├── ** manager unknown **
 |   └── Bowie
+├── ** self-manage **
+|   └── Rec
 ```

@@ -34,7 +34,18 @@ function print({ employees, level = 0 }) {
   });
 }
 
+function circularWarning({ classifiedEmployees }) {
+  try {
+    JSON.stringify(classifiedEmployees);
+  } catch(e) {
+    if(e.message.includes('Converting circular structure to JSON')) {
+      console.log('Circular structure detected - some employees will not be listed.')
+    }
+  }
+}
+
 function writer({ classifiedEmployees }) {
+  circularWarning({ classifiedEmployees });
   const orgChart = classifiedEmployees.filter(emp => !emp.managerId);
   print({ employees: orgChart });
 }

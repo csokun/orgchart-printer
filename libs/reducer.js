@@ -29,7 +29,7 @@ const reducer = ({ employees }) => {
         accumulated[managerId] = manager;
         classifiedEmployees.push(manager);
       }
-      manager.subordinates.push(employee);
+      manager.subordinates.push(accumulated[id]);
     }
 
     return accumulated;
