@@ -1,4 +1,4 @@
-const assert = require('assert').strict;
+const { test } = require('./test.helper');
 const { builder } = require('../report');
 
 const scenarios = [{
@@ -93,13 +93,9 @@ const scenarios = [{
 
 console.log('Report module test suite');
 scenarios.forEach(({ name, employees, expected }) => {
-  try {
+  test(name, () => {
     const nodes = [];
     builder({ nodes, employees });
-    assert.deepEqual(nodes, expected);
-    console.log(` + ${name} - Passed!`);
-  } catch (e) {
-    console.log(` - ${name} - Failed!`);
-    throw e;
-  }
+    return nodes;
+  }, expected);
 });

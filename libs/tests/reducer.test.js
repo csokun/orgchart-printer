@@ -1,4 +1,4 @@
-const assert = require('assert').strict;
+const { test } = require('./test.helper');
 const { reducer } = require('../reducer');
 
 const scenarios = [{
@@ -82,12 +82,7 @@ const scenarios = [{
 
 console.log('Reducer module test suite');
 scenarios.forEach(({ name, employees, expected }) => {
-  try {
-    const reduced = reducer({ employees });
-    assert.deepEqual(reduced, expected);
-    console.log(` + ${name} - Passed!`);
-  } catch(e) {
-    console.log(` - ${name} - Failed!`);
-    console.error(e);
-  }
+  test(name, () => {
+    return reducer({ employees });
+  }, expected);
 });
