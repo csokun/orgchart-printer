@@ -15,7 +15,7 @@ function getPath(level) {
   return path;
 }
 
-function print({ employees, level = 0 }) {
+function builder({ nodes = [], employees, level = 0 }) {
   const employeeCount = employees.length;
   const padding = getPath(level);
 
@@ -26,11 +26,11 @@ function print({ employees, level = 0 }) {
     const symbolChar = (lastChild && !hasSuboridates) ? '└──' : '├──';
 
     if (level > 0) {
-      console.log(`${padding}${symbolChar} ${name}`);
+      nodes.push(`${padding}${symbolChar} ${name}`);
     } else
-      console.log(`├── ${name}`);
+      nodes.push(`├── ${name}`);
 
-    if (hasSuboridates) print({ employees: subordinates, level: (level + 1)});
+    if (hasSuboridates) builder({ nodes, employees: subordinates, level: (level + 1)});
   });
 }
 
@@ -44,10 +44,16 @@ function circularWarning({ classifiedEmployees }) {
   }
 }
 
-function writer({ classifiedEmployees }) {
-  circularWarning({ classifiedEmployees });
-  const orgChart = classifiedEmployees.filter(emp => !emp.managerId);
-  print({ employees: orgChart });
+function print({ nodes }) {
+  console.log(nodes.join('\n'));
 }
 
-module.exports = { writer };
+function writer({ classifiedEmployees }) {
+  circularWarning({ classifiedEmployees });
+  const employees = classifiedEmployees.filter(emp => !emp.managerId);
+  const nodes = [];
+  builder({ nodes, employees });
+  print({ nodes });
+}
+
+module.exports = { writer, builder, print };

@@ -1,0 +1,21 @@
+{
+  "name": "orgchart-printer",
+  "version": "1.0.0",
+  "description": "Simple OrgChart printer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node libs/tests/index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csokun/orgchart-printer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csokun/orgchart-printer/issues"
+  },
+  "homepage": "https://github.com/csokun/orgchart-printer#readme"
+}
