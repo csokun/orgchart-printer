@@ -2,18 +2,6 @@
 
 Simple OrgChart printer.
 
-## Usage
-
-```
-node index.js
-```
-
-## Docker
-
-```
-docker build -t orgchart .
-docker run --rm -it orgchart
-```
 ## Sample Data
 
 ```json
@@ -31,7 +19,20 @@ docker run --rm -it orgchart
   { "name": "Junior", "id": 302, "managerId": 301 }
 ]
 ```
-Update [data file](data/employees.json)
+Update [data file](data/employees.json).
+
+## Usage
+
+```
+npm start
+```
+
+## Docker
+
+```
+docker build -t orgchart .
+docker run --rm -it orgchart
+```
 
 ## Output
 
@@ -51,3 +52,23 @@ Update [data file](data/employees.json)
 ├── ** self-manage **
 |   └── Rec
 ```
+
+
+## Unit Test
+
+```
+npm test
+```
+
+Wait no `jest`, `mocha` this guy mad :/.
+
+I agree those testing frameworks are great!, and `npm install <THE_INTERNET>` is awesome.
+
+> A good architecture allows major architectural decisions to be deferred.
+> ― Uncle Bob
+
+What I am demonstrating here is the possibility by not committing yourself to any external dependencies.
+
+## Limitation
+
+If there is a circular reference in the employees list. Those employees will not be include in the orgchart.
