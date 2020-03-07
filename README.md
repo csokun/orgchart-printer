@@ -23,15 +23,16 @@ Update [data file](data/employees.json).
 
 ## Usage
 
-```
+```bash
 npm start
 ```
 
 ## Docker
 
-```
-docker build -t orgchart .
-docker run --rm -it orgchart
+```bash
+docker build -t csokun/orgchart-printer .
+# or just execute this line
+docker run --rm -it csokun/orgchart-printer
 ```
 
 ## Output
@@ -56,7 +57,7 @@ docker run --rm -it orgchart
 
 ## Unit Test
 
-```
+```bash
 npm test
 ```
 
